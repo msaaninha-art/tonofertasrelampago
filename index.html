@@ -5,7 +5,269 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TonVendas — Planos e Maquininhas</title>
   <meta name="description" content="Compare e escolha a maquininha Ton com taxas atualizadas automaticamente. Links de revendedora exclusivos." />
-  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    :root {
+      --ton-green: #2b9c68;
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --max-width: 1100px;
+      --radius: 12px;
+      --shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .site-header {
+      padding: 18px 0;
+      margin-bottom: 18px;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .brand {
+      margin: 0;
+      font-size: 22px;
+      color: var(--ton-green);
+      font-weight: 700;
+    }
+
+    .tagline {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .right {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .plan-card {
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid #eef6f0;
+      background: linear-gradient(180deg, #ffffff, #fbfff9);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 160px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .plan-card:hover {
+      box-shadow: 0 8px 24px rgba(43, 156, 104, 0.12);
+    }
+
+    .plan-name {
+      font-weight: 700;
+      color: #053e2b;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .plan-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .plan-features {
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .plan-slogan {
+      color: var(--ton-green);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      background: var(--ton-green);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #228a56;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #eef2f3;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    tr:hover {
+      background: #f9fafb;
+    }
+
+    .site-footer {
+      margin-top: 18px;
+      padding: 14px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .muted {
+      color: var(--muted);
+      margin: 8px 0 0;
+    }
+
+    .contact-item {
+      margin-bottom: 16px;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: var(--ton-green);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .contact-value {
+      color: var(--muted);
+      margin-left: 24px;
+      line-height: 1.6;
+    }
+
+    .contact-value a {
+      color: var(--ton-green);
+      text-decoration: none;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    select {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+      color: #1f2937;
+      cursor: pointer;
+    }
+
+    select:hover {
+      border-color: var(--ton-green);
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--ton-green);
+      box-shadow: 0 0 0 3px rgba(43, 156, 104, 0.1);
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th,
+      td {
+        padding: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -34,18 +296,18 @@
     </section>
 
     <section id="plans" class="grid card">
-      <!-- planos serão renderizados aqui -->
-      <div id="loading">Carregando planos…</div>
+      <h2>Planos e Maquininhas</h2>
+      <div id="plans-list"></div>
     </section>
 
     <section id="compare" class="card">
       <h2>Comparação rápida</h2>
-      <div id="compare-table" class="table-wrapper">Carregando…</div>
+      <div id="compare-table" class="table-wrapper"></div>
     </section>
 
     <section id="contact" class="card">
       <h2>Contato & Suporte</h2>
-      <div id="contact-list">Carregando contatos…</div>
+      <div id="contact-list"></div>
     </section>
 
     <footer class="site-footer">
@@ -56,7 +318,175 @@
     </footer>
   </main>
 
-  <script src="/app.js" defer></script>
+  <script>
+    // Dados mock para demonstração
+    const mockData = {
+      lastFetched: new Date().toISOString(),
+      plans: [
+        {
+          id: 'plan-0',
+          title: 'TonPro Tier Smart POS',
+          rate: '2,99%',
+          features: ['Máquina de cartão', 'Suporte 24/7', 'Recebimento em 1 dia'],
+          slogan: 'A melhor solução para profissionais',
+          description: 'Máquina de cartão moderna com tecnologia NFC',
+          productId: 'TONPRO_TIER_NOV24_SMART_POS_B',
+          link: 'https://ton.com.br/planos-e-taxas',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_SMART_POS_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922'
+        },
+        {
+          id: 'plan-1',
+          title: 'TonMaxMEI Smart POS',
+          rate: '3,49%',
+          features: ['Ideal para MEI', 'Antifraude', 'Consulta de saldo'],
+          slogan: 'Perfeito para pequenos negócios',
+          description: 'Solução completa para microempreendedores',
+          productId: 'TONMAXMEI_TIER_SMART_POS',
+          link: 'https://ton.com.br/planos-e-taxas',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922'
+        },
+        {
+          id: 'plan-2',
+          title: 'TonSuper Smart POS',
+          rate: '2,49%',
+          features: ['Melhor taxa', 'Sem taxas de cancelamento', 'Programa de fidelidade'],
+          slogan: 'O plano mais completo',
+          description: 'Máquina com as melhores funcionalidades',
+          productId: 'TONSUPER_SMART_POS',
+          link: 'https://ton.com.br/planos-e-taxas',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONSUPER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922'
+        }
+      ],
+      contacts: {
+        phones: ['(11) 3000-0000', '(11) 3000-0001'],
+        emails: ['suporte@ton.com.br', 'vendas@ton.com.br'],
+        helpLinks: ['https://ton.com.br/ajuda', 'https://api.whatsapp.com/send?phone=5511999999999']
+      }
+    };
+
+    const LAST_UPDATED = document.getElementById('last-updated');
+    const FOOTER_LAST = document.getElementById('footer-last');
+    const PLANS_LIST = document.getElementById('plans-list');
+    const COMPARE_TABLE = document.getElementById('compare-table');
+    const CONTACT_LIST = document.getElementById('contact-list');
+
+    function formatDate(isoString) {
+      if (!isoString) return '—';
+      const date = new Date(isoString);
+      return date.toLocaleString('pt-BR');
+    }
+
+    function renderPlans(data) {
+      PLANS_LIST.innerHTML = data.plans
+        .map(
+          (plan) => `
+        <div class="plan-card">
+          <div>
+            <div class="plan-slogan">${plan.slogan}</div>
+            <div class="plan-name">${plan.title}</div>
+            <div class="plan-price">${plan.rate}</div>
+            <div class="plan-features">${plan.features.join(' • ')}</div>
+          </div>
+          <a href="${plan.sellerLink}" class="btn" target="_blank">Assine agora</a>
+        </div>
+      `
+        )
+        .join('');
+    }
+
+    function renderComparison(data) {
+      const rows = data.plans
+        .map(
+          (plan) => `
+        <tr>
+          <td><strong>${plan.title}</strong></td>
+          <td><strong style="color: var(--ton-green);">${plan.rate}</strong></td>
+          <td>${plan.features.join(', ')}</td>
+        </tr>
+      `
+        )
+        .join('');
+
+      COMPARE_TABLE.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Plano</th>
+              <th>Taxa</th>
+              <th>Benefícios</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function renderContacts(data) {
+      const phones = data.contacts.phones
+        .map((phone) => `<div class="contact-value">${phone}</div>`)
+        .join('');
+
+      const emails = data.contacts.emails
+        .map((email) => `<div class="contact-value"><a href="mailto:${email}">${email}</a></div>`)
+        .join('');
+
+      const links = data.contacts.helpLinks
+        .map((link) => `<div class="contact-value"><a href="${link}" target="_blank">${link}</a></div>`)
+        .join('');
+
+      CONTACT_LIST.innerHTML = `
+        <div class="contact-item">
+          <div class="contact-label">📞 Telefone</div>
+          ${phones}
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">✉️ E-mail</div>
+          ${emails}
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">🔗 Links de Suporte</div>
+          ${links}
+        </div>
+      `;
+    }
+
+    function updateLastFetched(data) {
+      const formatted = formatDate(data.lastFetched);
+      LAST_UPDATED.textContent = `Última atualização: ${formatted}`;
+      FOOTER_LAST.textContent = formatted;
+    }
+
+    function loadData() {
+      renderPlans(mockData);
+      renderComparison(mockData);
+      renderContacts(mockData);
+      updateLastFetched(mockData);
+    }
+
+    // Carregar dados ao iniciar
+    loadData();
+
+    // Configurar atualização automática
+    const refreshInterval = document.getElementById('refresh-interval');
+    let updateTimer = null;
+
+    function setupAutoRefresh() {
+      if (updateTimer) clearInterval(updateTimer);
+
+      const interval = parseInt(refreshInterval.value);
+      if (interval > 0) {
+        updateTimer = setInterval(() => {
+          mockData.lastFetched = new Date().toISOString();
+          loadData();
+        }, interval * 60 * 1000);
+      }
+    }
+
+    refreshInterval.addEventListener('change', setupAutoRefresh);
+    setupAutoRefresh();
+  </script>
 </body>
 </html>
 
