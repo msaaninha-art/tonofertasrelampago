@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TonVendas — Planos e Maquininhas (DEMO)</title>
+  <meta name="description" content="Compare e escolha a maquininha Ton com taxas atualizadas automaticamente. Links de revendedora exclusivos." />
+  <style>
+    :root {
+      --ton-green: #2b9c68;
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --max-width: 1100px;
+      --radius: 12px;
+      --shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .site-header {
+      padding: 18px 0;
+      margin-bottom: 18px;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .brand {
+      margin: 0;
+      font-size: 22px;
+      color: var(--ton-green);
+      font-weight: 700;
+    }
+
+    .tagline {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .right {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .plan-card {
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid #eef6f0;
+      background: linear-gradient(180deg, #ffffff, #fbfff9);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 160px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .plan-card:hover {
+      box-shadow: 0 8px 24px rgba(43, 156, 104, 0.12);
+    }
+
+    .plan-name {
+      font-weight: 700;
+      color: #053e2b;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .plan-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .plan-features {
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .plan-slogan {
+      color: var(--ton-green);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      background: var(--ton-green);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #228a56;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #eef2f3;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    tr:hover {
+      background: #f9fafb;
+    }
+
+    .site-footer {
+      margin-top: 18px;
+      padding: 14px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .muted {
+      color: var(--muted);
+      margin: 8px 0 0;
+    }
+
+    .contact-item {
+      margin-bottom: 16px;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: var(--ton-green);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .contact-value {
+      color: var(--muted);
+      margin-left: 24px;
+      line-height: 1.6;
+    }
+
+    .contact-value a {
+      color: var(--ton-green);
+      text-decoration: none;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    select {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+      color: #1f2937;
+      cursor: pointer;
+    }
+
+    select:hover {
+      border-color: var(--ton-green);
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--ton-green);
+      box-shadow: 0 0 0 3px rgba(43, 156, 104, 0.1);
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 16px;
+    }
+
+    .demo-badge {
+      background: #fef08a;
+      border: 1px solid #fcd34d;
+      color: #92400e;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    @media (max-width: 640px) {
+      .row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th,
+      td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">TonVendas</h1>
+      <p class="tagline">Planos Ton atualizados automaticamente — revendedora: Ana</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="demo-badge">🎯 VERSÃO DEMO - Dados de Exemplo</div>
+
+    <section id="controls" class="card">
+      <div class="row">
+        <div>
+          <label for="refresh-interval">Atualização automática:</label>
+          <select id="refresh-interval">
+            <option value="30">30 min (recomendado)</option>
+            <option value="15">15 min</option>
+            <option value="60">60 min</option>
+            <option value="0">Off</option>
+          </select>
+        </div>
+        <div class="right">
+          <span id="last-updated">Última atualização: —</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="grid card">
+      <h2>Planos e Maquininhas</h2>
+      <div id="plans-list"></div>
+    </section>
+
+    <section id="compare" class="card">
+      <h2>Comparação rápida</h2>
+      <div id="compare-table" class="table-wrapper"></div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contato & Suporte</h2>
+      <div id="contact-list"></div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>Dados obtidos a partir de Ton.com.br — Atualizações automáticas a cada 30 minutos.</small>
+        <p class="muted">Último fetch: <span id="footer-last">—</span></p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Dados mock para demonstração
+    const mockData = {
+      lastFetched: new Date().toISOString(),
+      plans: [
+        {
+          id: 'plan-0',
+          title: 'TonPro Tier Smart POS',
+          rate: '2,99%',
+          features: ['Máquina de cartão', 'Suporte 24/7', 'Recebimento em 1 dia'],
+          slogan: 'A melhor solução para profissionais',
+          description: 'Máquina de cartão moderna com tecnologia NFC',
+          productId: 'TONPRO_TIER_NOV24_SMART_POS_B',
+          link: 'https://ton.com.br/planos-e-taxas',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_SMART_POS_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922'
+        },
+        {
+          id: 'plan-1',
+          title: 'TonMaxMEI Smart POS',
+          rate: '3,49%',
+          features: ['Ideal para MEI', 'Antifraude', 'Consulta de saldo'],
+          slogan: 'Perfeito para pequenos negócios',
+          description: 'Solução completa para microempreendedores',
+          productId: 'TONMAXMEI_TIER_SMART_POS',
+          link: 'https://ton.com.br/planos-e-taxas',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922'
+        },
+        {
+          id: 'plan-2',
+          title: 'TonSuper Smart POS',
+          rate: '2,49%',
+          features: ['Melhor taxa', 'Sem taxas de cancelamento', 'Programa de fidelidade'],
+          slogan: 'O plano mais completo',
+          description: 'Máquina com as melhores funcionalidades',
+          productId: 'TONSUPER_SMART_POS',
+          link: 'https://ton.com.br/planos-e-taxas',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONSUPER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922'
+        }
+      ],
+      contacts: {
+        phones: ['(11) 3000-0000', '(11) 3000-0001'],
+        emails: ['suporte@ton.com.br', 'vendas@ton.com.br'],
+        helpLinks: ['https://ton.com.br/ajuda', 'https://api.whatsapp.com/send?phone=5511999999999']
+      }
+    };
+
+    const LAST_UPDATED = document.getElementById('last-updated');
+    const FOOTER_LAST = document.getElementById('footer-last');
+    const PLANS_LIST = document.getElementById('plans-list');
+    const COMPARE_TABLE = document.getElementById('compare-table');
+    const CONTACT_LIST = document.getElementById('contact-list');
+
+    function formatDate(isoString) {
+      if (!isoString) return '—';
+      const date = new Date(isoString);
+      return date.toLocaleString('pt-BR');
+    }
+
+    function renderPlans(plans) {
+      const html = plans
+        .map(
+          (plan) => `
+        <div class="plan-card">
+          <div>
+            <div class="plan-name">${plan.title}</div>
+            ${plan.slogan ? `<div class="plan-slogan">${plan.slogan}</div>` : ''}
+            <div class="plan-price">${plan.rate}</div>
+            ${
+              plan.features && plan.features.length > 0
+                ? `<div class="plan-features">${plan.features.join(' • ')}</div>`
+                : ''
+            }
+          </div>
+          <a href="${plan.sellerLink || plan.link}" target="_blank" rel="noopener noreferrer" class="btn">
+            Assine agora
+          </a>
+        </div>
+      `
+        )
+        .join('');
+
+      PLANS_LIST.innerHTML = html;
+    }
+
+    function renderComparisonTable(plans) {
+      const rows = plans
+        .map(
+          (plan) => `
+        <tr>
+          <td><strong>${plan.title}</strong></td>
+          <td style="color: var(--ton-green); font-weight: 600;">${plan.rate}</td>
+          <td>${plan.features?.join(', ') || '—'}</td>
+        </tr>
+      `
+        )
+        .join('');
+
+      const html = `
+        <table>
+          <thead>
+            <tr>
+              <th>Plano</th>
+              <th>Taxa</th>
+              <th>Benefícios</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      `;
+
+      COMPARE_TABLE.innerHTML = html;
+    }
+
+    function renderContacts(contacts) {
+      let html = '';
+
+      if (contacts.phones && contacts.phones.length > 0) {
+        html += `
+          <div class="contact-item">
+            <div class="contact-label">📞 Telefone</div>
+            <div class="contact-value">
+              ${contacts.phones.map((phone) => `<div>${phone}</div>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (contacts.emails && contacts.emails.length > 0) {
+        html += `
+          <div class="contact-item">
+            <div class="contact-label">✉️ E-mail</div>
+            <div class="contact-value">
+              ${contacts.emails.map((email) => `<div><a href="mailto:${email}">${email}</a></div>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (contacts.helpLinks && contacts.helpLinks.length > 0) {
+        html += `
+          <div class="contact-item">
+            <div class="contact-label">🔗 Links de Suporte</div>
+            <div class="contact-value">
+              ${contacts.helpLinks
+                .map((link) => `<div><a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a></div>`)
+                .join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      CONTACT_LIST.innerHTML = html;
+    }
+
+    function loadData() {
+      const timestamp = formatDate(mockData.lastFetched);
+      LAST_UPDATED.textContent = timestamp;
+      FOOTER_LAST.textContent = timestamp;
+
+      renderPlans(mockData.plans);
+      renderComparisonTable(mockData.plans);
+      renderContacts(mockData.contacts);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TonVendas — Planos e Maquininhas</title>
+  <meta name="description" content="Compare e escolha a maquininha Ton com taxas atualizadas automaticamente. Links de revendedora exclusivos." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">TonVendas</h1>
+      <p class="tagline">Planos Ton atualizados automaticamente — revendedora: Ana</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="controls" class="card">
+      <div class="row">
+        <div>
+          <label for="refresh-interval">Atualização automática:</label>
+          <select id="refresh-interval">
+            <option value="30">30 min (recomendado)</option>
+            <option value="15">15 min</option>
+            <option value="60">60 min</option>
+            <option value="0">Off</option>
+          </select>
+        </div>
+        <div class="right">
+          <span id="last-updated">Última atualização: —</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="grid card">
+      <!-- planos serão renderizados aqui -->
+      <div id="loading">Carregando planos…</div>
+    </section>
+
+    <section id="compare" class="card">
+      <h2>Comparação rápida</h2>
+      <div id="compare-table" class="table-wrapper">Carregando…</div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contato & Suporte</h2>
+      <div id="contact-list">Carregando contatos…</div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>Dados obtidos a partir de Ton.com.br — Atualizações automáticas a cada 30 minutos.</small>
+        <p class="muted">Último fetch: <span id="footer-last">—</span></p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
+
