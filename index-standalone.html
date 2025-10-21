@@ -325,8 +325,8 @@
         <div>
           <label for="refresh-interval">Atualização automática:</label>
           <select id="refresh-interval">
-            <option value="30">30 min (recomendado)</option>
-            <option value="15">15 min</option>
+            <option value="30">30 min</option>
+            <option value="15" selected>15 min</option>
             <option value="60">60 min</option>
             <option value="0">Off</option>
           </select>
@@ -353,7 +353,7 @@
 
     <footer class="site-footer">
       <div class="container">
-        <small>Dados obtidos a partir de Ton.com.br — Atualizações automáticas a cada 30 minutos.</small>
+        <small>Dados obtidos a partir de Ton.com.br — Atualizações automáticas a cada 15 minutos.</small>
         <p class="muted">Último fetch: <span id="footer-last">—</span></p>
       </div>
     </footer>
@@ -592,4 +592,5 @@
   </script>
 </body>
 </html>
+
 
