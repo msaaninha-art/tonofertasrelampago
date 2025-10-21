@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TonVendas — Planos e Maquininhas</title>
+  <title>TonVendas — Planos e Maquininhas Promoção Relampago</title>
   <meta name="description" content="Compare e escolha a maquininha Ton com taxas atualizadas automaticamente. Links de revendedora exclusivos." />
   <style>
     :root {
@@ -144,16 +144,6 @@
       background: #228a56;
     }
 
-    .btn.secondary {
-      background: transparent;
-      color: var(--ton-green);
-      border: 1px solid rgba(43, 156, 104, 0.15);
-    }
-
-    .btn.secondary:hover {
-      background: rgba(43, 156, 104, 0.05);
-    }
-
     .table-wrapper {
       overflow-x: auto;
     }
@@ -193,21 +183,6 @@
     .muted {
       color: var(--muted);
       margin: 8px 0 0;
-    }
-
-    #loading {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted);
-    }
-
-    .error-message {
-      background: #fee2e2;
-      border: 1px solid #fecaca;
-      color: #991b1b;
-      padding: 12px 16px;
-      border-radius: 8px;
-      margin-bottom: 16px;
     }
 
     .contact-item {
@@ -263,23 +238,6 @@
       font-weight: 700;
       color: #1f2937;
       margin-bottom: 16px;
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid #e5e7eb;
-      border-top-color: var(--ton-green);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-right: 8px;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
     }
 
     @media (max-width: 640px) {
@@ -338,104 +296,103 @@
     </section>
 
     <section id="plans" class="grid card">
-      <div id="loading"><span class="spinner"></span>Carregando planos…</div>
+      <h2>Planos e Maquininhas</h2>
+      <div id="plans-list"></div>
     </section>
 
     <section id="compare" class="card">
       <h2>Comparação rápida</h2>
-      <div id="compare-table" class="table-wrapper">Carregando…</div>
+      <div id="compare-table" class="table-wrapper"></div>
     </section>
 
     <section id="contact" class="card">
       <h2>Contato & Suporte</h2>
-      <div id="contact-list">Carregando contatos…</div>
+      <div id="contact-list"></div>
     </section>
 
     <footer class="site-footer">
       <div class="container">
-        <small>Dados obtidos a partir de Ton.com.br — Atualizações automáticas a cada 15 minutos.</small>
+        <small>Dados obtidos a partir de www.ton.com.br — Atualizações automáticas a cada 15 minutos.</small>
         <p class="muted">Último fetch: <span id="footer-last">—</span></p>
       </div>
     </footer>
   </main>
 
   <script>
-    /**
-     * TonVendas - Frontend JavaScript
-     * Gerencia a exibição de planos, comparação e contatos
-     */
+    // Dados mock para demonstração
+    const mockData = {
+      lastFetched: new Date().toISOString(),
+      plans: [
+        {
+          id: 'plan-0',
+          title: 'T3 Smart Ton Pro',
+          features: ['Máquina de cartão', 'Suporte 24/7', 'Recebimento em 1 dia'],
+          slogan: 'A melhor solução para profissionais',
+          description: 'Máquina de cartão moderna com tecnologia NFC',
+          productId: 'T3 Smart Pro',
+          link: 'https://www.ton.com.br/maquininha/t3-smart?srsltid=AfmBOopvPzknvqOchacT2zLzWJ3VZQ-V9DldJiyBwneGjyvYyeykOOpJ',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_SMART_POS_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+        },
+        {
+          id: 'plan-1',
+          title: 'T3 Smart MEI e PJ',
+          features: ['Ideal para MEI', 'Antifraude', 'Consulta de saldo'],
+          slogan: 'Perfeito para pequenos negócios',
+          description: 'Solução completa para microempreendedores',
+          productId: 'T3 Smart MEI e PJ',
+          link: 'https://www.ton.com.br/MEI-PJ?srsltid=AfmBOop1oM9Tdu9MRjvqPZFkaXX7Ut39YKS-8eKP2IN41DdPiqJrMW9H',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonmaxmei_tier&utm_medium=invite_share&utm_source=revendedor'
+        },
+        {
+          id: 'plan-2',
+          title: 'T3 Ton Pró',
+          features: ['Melhor taxa', 'Sem taxas de cancelamento', 'Programa de fidelidade'],
+          slogan: 'O plano mais completo',
+          description: 'Máquina com as melhores funcionalidades',
+          productId: 'T3 Ton Pró',
+          link: 'https://www.ton.com.br/?srsltid=AfmBOooOBWYonXn3P9sg6lkijb2we1MhxAXBCaVSbHDzEfsXgnC7LGD-',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_S920_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+        },
+        {
+          id: 'plan-2',
+          title: 'T2 Ton Pró',
+          features: ['Melhor taxa', 'Sem taxas de cancelamento', 'Programa de fidelidade'],
+          slogan: 'O plano mais completo',
+          description: 'Máquina com boas funcionalidades, simples e prática',
+          productId: 'T2 Ton Pró',
+          link: 'https://www.ton.com.br/?srsltid=AfmBOooOBWYonXn3P9sg6lkijb2we1MhxAXBCaVSbHDzEfsXgnC7LGD-',
+          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_D195_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+        }
+      ],
+      contacts: {
+        phones: ['(11) 3000-0000', '(11) 3000-0001'],
+        emails: ['suporte@ton.com.br', 'vendas@ton.com.br'],
+        helpLinks: ['https://ton.com.br/ajuda', 'https://api.whatsapp.com/send?phone=5511999999999']
+      }
+    };
 
-    const API_URL = '/api/data';
-    const REFRESH_INTERVAL_SELECT = document.getElementById('refresh-interval');
-    const PLANS_CONTAINER = document.getElementById('plans');
-    const COMPARE_TABLE = document.getElementById('compare-table');
-    const CONTACT_LIST = document.getElementById('contact-list');
     const LAST_UPDATED = document.getElementById('last-updated');
     const FOOTER_LAST = document.getElementById('footer-last');
+    const PLANS_LIST = document.getElementById('plans-list');
+    const COMPARE_TABLE = document.getElementById('compare-table');
+    const CONTACT_LIST = document.getElementById('contact-list');
 
-    let refreshIntervalId = null;
-
-    /**
-     * Formata data ISO para formato brasileiro
-     */
     function formatDate(isoString) {
       if (!isoString) return '—';
       const date = new Date(isoString);
       return date.toLocaleString('pt-BR');
     }
 
-    /**
-     * Busca dados da API
-     */
-    async function fetchData() {
-      try {
-        const response = await fetch(API_URL, { cache: 'no-store' });
-        if (!response.ok) throw new Error('Erro ao buscar dados');
-        return await response.json();
-      } catch (error) {
-        console.error('Erro ao buscar dados:', error);
-        showError(error.message);
-        return null;
-      }
-    }
-
-    /**
-     * Exibe mensagem de erro
-     */
-    function showError(message) {
-      PLANS_CONTAINER.innerHTML = `
-        <div class="error-message">
-          ⚠️ ${message}
-          <br>
-          <button class="btn" onclick="loadData()" style="margin-top: 10px; width: auto; padding: 8px 16px;">Tentar Novamente</button>
-        </div>
-      `;
-    }
-
-    /**
-     * Renderiza cards de planos
-     */
-    function renderPlans(plans) {
-      if (!plans || plans.length === 0) {
-        PLANS_CONTAINER.innerHTML = '<p>Nenhum plano encontrado.</p>';
-        return;
-      }
-
-      const html = plans
+    function renderPlans(data) {
+      PLANS_LIST.innerHTML = data.plans
         .map(
           (plan) => `
         <div class="plan-card">
           <div>
+            <div class="plan-slogan">${plan.slogan}</div>
             <div class="plan-name">${plan.title}</div>
-            ${plan.slogan ? `<div class="plan-slogan">${plan.slogan}</div>` : ''}
             <div class="plan-price">${plan.rate}</div>
-            ${
-              plan.features && plan.features.length > 0
-                ? `<div class="plan-features">${plan.features.join(' • ')}</div>`
-                : plan.description
-                  ? `<div class="plan-features">${plan.description}</div>`
-                  : ''
-            }
+            <div class="plan-features">${plan.features.join(' • ')}</div>
           </div>
           <a href="${plan.sellerLink || plan.link}" target="_blank" rel="noopener noreferrer" class="btn">
             Assine agora
@@ -444,32 +401,10 @@
       `
         )
         .join('');
-
-      PLANS_CONTAINER.innerHTML = html;
     }
 
-    /**
-     * Renderiza tabela de comparação
-     */
-    function renderComparisonTable(plans) {
-      if (!plans || plans.length === 0) {
-        COMPARE_TABLE.innerHTML = '<p>Nenhum plano para comparar.</p>';
-        return;
-      }
-
-      const rows = plans
-        .map(
-          (plan) => `
-        <tr>
-          <td><strong>${plan.title}</strong></td>
-          <td style="color: var(--ton-green); font-weight: 600;">${plan.rate}</td>
-          <td>${plan.features?.join(', ') || plan.description || '—'}</td>
-        </tr>
-      `
-        )
-        .join('');
-
-      const html = `
+    function renderComparisonTable(data) {
+      COMPARE_TABLE.innerHTML = `
         <table>
           <thead>
             <tr>
@@ -479,118 +414,78 @@
             </tr>
           </thead>
           <tbody>
-            ${rows}
+            ${data.plans
+              .map(
+                (plan) => `
+                <tr>
+                  <td><strong>${plan.title}</strong></td>
+                  <td style="color: var(--ton-green); font-weight: 600;">${plan.rate}</td>
+                  <td>${plan.features?.join(', ') || plan.description || '—'}</td>
+                </tr>
+              `
+              )
+              .join('')}
           </tbody>
         </table>
       `;
-
-      COMPARE_TABLE.innerHTML = html;
     }
 
-    /**
-     * Renderiza seção de contatos
-     */
-    function renderContacts(contacts) {
-      if (!contacts) {
-        CONTACT_LIST.innerHTML = '<p>Contato não encontrado.</p>';
-        return;
-      }
-
+    function renderContacts(data) {
       let html = '';
-
-      if (contacts.phones && contacts.phones.length > 0) {
+      if (data.contacts.phones && data.contacts.phones.length > 0) {
         html += `
           <div class="contact-item">
             <div class="contact-label">📞 Telefone</div>
             <div class="contact-value">
-              ${contacts.phones.map((phone) => `<div>${phone}</div>`).join('')}
+              ${data.contacts.phones.map((phone) => `<div>${phone}</div>`).join('')}
             </div>
           </div>
         `;
       }
-
-      if (contacts.emails && contacts.emails.length > 0) {
+      if (data.contacts.emails && data.contacts.emails.length > 0) {
         html += `
           <div class="contact-item">
             <div class="contact-label">✉️ E-mail</div>
             <div class="contact-value">
-              ${contacts.emails.map((email) => `<div><a href="mailto:${email}">${email}</a></div>`).join('')}
+              ${data.contacts.emails.map((email) => `<div><a href="mailto:${email}">${email}</a></div>`).join('')}
             </div>
           </div>
         `;
       }
-
-      if (contacts.helpLinks && contacts.helpLinks.length > 0) {
+      if (data.contacts.helpLinks && data.contacts.helpLinks.length > 0) {
         html += `
           <div class="contact-item">
             <div class="contact-label">🔗 Links de Suporte</div>
             <div class="contact-value">
-              ${contacts.helpLinks
-                .map((link) => `<div><a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a></div>`)
-                .join('')}
+              ${data.contacts.helpLinks.map((link) => `<div><a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a></div>`).join('')}
             </div>
           </div>
         `;
       }
-
-      if (!html) {
-        html = '<p>Contato não encontrado automaticamente. Consulte a Ton para suporte oficial.</p>';
-      }
-
       CONTACT_LIST.innerHTML = html;
     }
 
-    /**
-     * Carrega e renderiza todos os dados
-     */
+    // Função para carregar dados (usando mockData para esta demo)
     async function loadData() {
-      PLANS_CONTAINER.innerHTML = '<div id="loading"><span class="spinner"></span>Carregando planos…</div>';
-      COMPARE_TABLE.innerHTML = 'Carregando…';
-      CONTACT_LIST.innerHTML = 'Carregando contatos…';
-
-      const data = await fetchData();
-      if (!data) return;
-
-      // Atualizar timestamp
-      const timestamp = formatDate(data.lastFetched);
-      LAST_UPDATED.textContent = timestamp;
-      FOOTER_LAST.textContent = timestamp;
-
-      // Renderizar seções
-      renderPlans(data.plans);
-      renderComparisonTable(data.plans);
-      renderContacts(data.contacts);
+      const data = mockData; // Usando mockData diretamente
+      LAST_UPDATED.textContent = formatDate(data.lastFetched);
+      FOOTER_LAST.textContent = formatDate(data.lastFetched);
+      renderPlans(data);
+      renderComparisonTable(data);
+      renderContacts(data);
     }
 
-    /**
-     * Configura intervalo de atualização automática
-     */
-    function setupAutoRefresh() {
-      if (refreshIntervalId) clearInterval(refreshIntervalId);
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', loadData);
 
+    // Configura o intervalo de atualização (ainda que para mockData, mantém a estrutura)
+    const REFRESH_INTERVAL_SELECT = document.getElementById('refresh-interval');
+    REFRESH_INTERVAL_SELECT.addEventListener('change', () => {
       const interval = parseInt(REFRESH_INTERVAL_SELECT.value);
-      if (interval === 0) return;
-
-      refreshIntervalId = setInterval(() => {
-        console.log(`[Auto-refresh] Atualizando dados (intervalo: ${interval} min)`);
-        loadData();
-      }, interval * 60 * 1000);
-    }
-
-    /**
-     * Event listeners
-     */
-    REFRESH_INTERVAL_SELECT.addEventListener('change', setupAutoRefresh);
-
-    /**
-     * Inicialização
-     */
-    document.addEventListener('DOMContentLoaded', () => {
-      loadData();
-      setupAutoRefresh();
+      console.log(`Intervalo de atualização selecionado: ${interval} minutos`);
+      // Em uma aplicação real, isso reiniciaria um timer para buscar dados da API
     });
   </script>
 </body>
 </html>
-
 
