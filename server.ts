@@ -1,230 +1,106 @@
-/**
- * TonVendas - Frontend JavaScript
- * Gerencia a exibição de planos, comparação e contatos
- */
+import express from 'express';
+import cors from 'cors';
 
-const API_URL = '/api/data';
-const REFRESH_INTERVAL_SELECT = document.getElementById('refresh-interval');
-const PLANS_CONTAINER = document.getElementById('plans');
-const COMPARE_TABLE = document.getElementById('compare-table');
-const CONTACT_LIST = document.getElementById('contact-list');
-const LAST_UPDATED = document.getElementById('last-updated');
-const FOOTER_LAST = document.getElementById('footer-last');
+const app = express();
+const port = 3000;
 
-let refreshIntervalId = null;
+app.use(cors());
+app.use(express.json());
 
-/**
- * Formata data ISO para formato brasileiro
- */
-function formatDate(isoString) {
-  if (!isoString) return '—';
-  const date = new Date(isoString);
-  return date.toLocaleString('pt-BR');
-}
-
-/**
- * Busca dados da API
- */
-async function fetchData() {
-  try {
-    const response = await fetch(API_URL, { cache: 'no-store' });
-    if (!response.ok) throw new Error('Erro ao buscar dados');
-    return await response.json();
-  } catch (error) {
-    console.error('Erro ao buscar dados:', error);
-    showError(error.message);
-    return null;
+const mockData = {
+  lastFetched: new Date().toISOString(),
+  plans: [
+    {
+      id: 'plan-0',
+      title: 'T3 SMART TON PRÓ',
+      rate: 'Taxas a partir de 0,99%',
+      features: ['Ideal para grandes volumes', 'Conexão 4G e Wi-Fi', 'Bateria de longa duração'],
+      slogan: 'Para quem busca alta performance',
+      description: 'A máquina mais completa para seu negócio.',
+      productId: 'TONPRO_TIER_NOV24_SMART_POS_B',
+      link: 'https://ton.com.br/planos-e-taxas',
+      sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_SMART_POS_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+    },
+    {
+      id: 'plan-1',
+      title: 'T3 Smart Ton Max - MEI e PJ',
+      rate: 'Taxas a partir de 1,39%',
+      features: ['Ideal para MEI e PJ', 'Conexão 4G e Wi-Fi', 'Tela touch'],
+      slogan: 'Solução completa para seu negócio',
+      description: 'Máquina inteligente para micro e pequenos empreendedores.',
+      productId: 'TONMAXMEI_TIER_SMART_POS',
+      link: 'https://ton.com.br/planos-e-taxas',
+      sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonmaxmei_tier&utm_medium=invite_share&utm_source=revendedor'
+    },
+    {
+      id: 'plan-2',
+      title: 'T3 Smart Ton Super',
+      rate: 'Taxas a partir de 1,69%',
+      features: ['Aceita as principais bandeiras', 'Conexão 4G e Wi-Fi', 'Comprovante por SMS'],
+      slogan: 'A melhor escolha para o dia a dia',
+      description: 'Perfeita para quem busca praticidade e bom preço.',
+      productId: 'TONSUPER_SMART_POS',
+      link: 'https://ton.com.br/planos-e-taxas',
+      sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONSUPER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonsuper&utm_medium=invite_share&utm_source=revendedor'
+    },
+    {
+      id: 'plan-3',
+      title: 'T3 Ton Max - MEI e PJ',
+      rate: 'Taxas a partir de 1,39%',
+      features: ['Ideal para MEI e PJ', 'Conexão 4G', 'Sem aluguel'],
+      slogan: 'Potência e economia para seu negócio',
+      description: 'A máquina ideal para quem busca custo-benefício.',
+      productId: 'TONMAXMEI_TIER_S920',
+      link: 'https://ton.com.br/planos-e-taxas',
+      sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_S920&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonmaxmei_tier&utm_medium=invite_share&utm_source=revendedor'
+    },
+    {
+      id: 'plan-4',
+      title: 'T3 Ton Pro',
+      rate: 'Taxas a partir de 0,99%',
+      features: ['Melhores taxas', 'Conexão 4G', 'Bateria de longa duração'],
+      slogan: 'Para grandes volumes de vendas',
+      description: 'A máquina mais vendida da Ton.',
+      productId: 'TONPRO_TIER_NOV24_S920_B',
+      link: 'https://ton.com.br/planos-e-taxas',
+      sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_S920_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+    },
+    {
+      id: 'plan-5',
+      title: 'T3 Ton Super',
+      rate: 'Taxas a partir de 1,69%',
+      features: ['Aceita cartões de crédito e débito', 'Conexão 4G', 'Comprovante impresso'],
+      slogan: 'Simples e eficiente para o seu dia a dia',
+      description: 'A máquina ideal para quem está começando.',
+      productId: 'TONSUPER_S920',
+      link: 'https://ton.com.br/planos-e-taxas',
+      sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONSUPER_S920&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonsuper&utm_medium=invite_share&utm_source=revendedor'
+    },
+    {
+      id: 'plan-6',
+      title: 'T2 Ton Pro',
+      rate: 'Taxas a partir de 0,99%',
+      features: ['Compacta e potente', 'Conexão Bluetooth', 'Bateria de longa duração'],
+      slogan: 'Mobilidade e performance',
+      description: 'Perfeita para quem vende em qualquer lugar.',
+      productId: 'TONPRO_TIER_NOV24_D195_B',
+      link: 'https://ton.com.br/planos-e-taxas',
+      sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_D195_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+    }
+  ],
+  contacts: {
+    phones: ['(11) 3000-0000', '(11) 3000-0001'],
+    emails: ['suporte@ton.com.br', 'vendas@ton.com.br'],
+    helpLinks: ['https://ton.com.br/ajuda', 'https://api.whatsapp.com/send?phone=5511999999999']
   }
-}
+};
 
-/**
- * Exibe mensagem de erro
- */
-function showError(message) {
-  PLANS_CONTAINER.innerHTML = `
-    <div class="error-message">
-      ⚠️ ${message}
-      <br>
-      <button class="btn" onclick="loadData()" style="margin-top: 10px;">Tentar Novamente</button>
-    </div>
-  `;
-}
+app.get('/api/data', (req, res) => {
+  mockData.lastFetched = new Date().toISOString();
+  res.json(mockData);
+});
 
-/**
- * Renderiza cards de planos
- */
-function renderPlans(plans) {
-  if (!plans || plans.length === 0) {
-    PLANS_CONTAINER.innerHTML = '<p>Nenhum plano encontrado.</p>';
-    return;
-  }
-
-  const html = plans
-    .map(
-      (plan) => `
-    <div class="plan-card">
-      <div>
-        <div class="plan-name">${plan.title}</div>
-        ${plan.slogan ? `<div class="plan-slogan">${plan.slogan}</div>` : ''}
-        <div class="plan-price">${plan.rate}</div>
-        ${
-          plan.features && plan.features.length > 0
-            ? `<div class="plan-features">${plan.features.join(' • ')}</div>`
-            : plan.description
-              ? `<div class="plan-features">${plan.description}</div>`
-              : ''
-        }
-      </div>
-      <a href="${plan.sellerLink || plan.link}" target="_blank" rel="noopener noreferrer" class="btn">
-        Assine agora
-      </a>
-    </div>
-  `
-    )
-    .join('');
-
-  PLANS_CONTAINER.innerHTML = html;
-}
-
-/**
- * Renderiza tabela de comparação
- */
-function renderComparisonTable(plans) {
-  if (!plans || plans.length === 0) {
-    COMPARE_TABLE.innerHTML = '<p>Nenhum plano para comparar.</p>';
-    return;
-  }
-
-  const rows = plans
-    .map(
-      (plan) => `
-    <tr>
-      <td><strong>${plan.title}</strong></td>
-      <td style="color: var(--ton-green); font-weight: 600;">${plan.rate}</td>
-      <td>${plan.features?.join(', ') || plan.description || '—'}</td>
-    </tr>
-  `
-    )
-    .join('');
-
-  const html = `
-    <table>
-      <thead>
-        <tr>
-          <th>Plano</th>
-          <th>Taxa</th>
-          <th>Benefícios</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${rows}
-      </tbody>
-    </table>
-  `;
-
-  COMPARE_TABLE.innerHTML = html;
-}
-
-/**
- * Renderiza seção de contatos
- */
-function renderContacts(contacts) {
-  if (!contacts) {
-    CONTACT_LIST.innerHTML = '<p>Contato não encontrado.</p>';
-    return;
-  }
-
-  let html = '';
-
-  if (contacts.phones && contacts.phones.length > 0) {
-    html += `
-      <div class="contact-item">
-        <div class="contact-label">📞 Telefone</div>
-        <div class="contact-value">
-          ${contacts.phones.map((phone) => `<div>${phone}</div>`).join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  if (contacts.emails && contacts.emails.length > 0) {
-    html += `
-      <div class="contact-item">
-        <div class="contact-label">✉️ E-mail</div>
-        <div class="contact-value">
-          ${contacts.emails.map((email) => `<div><a href="mailto:${email}">${email}</a></div>`).join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  if (contacts.helpLinks && contacts.helpLinks.length > 0) {
-    html += `
-      <div class="contact-item">
-        <div class="contact-label">🔗 Links de Suporte</div>
-        <div class="contact-value">
-          ${contacts.helpLinks
-            .map((link) => `<div><a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a></div>`)
-            .join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  if (!html) {
-    html = '<p>Contato não encontrado automaticamente. Consulte a Ton para suporte oficial.</p>';
-  }
-
-  CONTACT_LIST.innerHTML = html;
-}
-
-/**
- * Carrega e renderiza todos os dados
- */
-async function loadData() {
-  PLANS_CONTAINER.innerHTML = '<div id="loading">Carregando planos…</div>';
-  COMPARE_TABLE.innerHTML = 'Carregando…';
-  CONTACT_LIST.innerHTML = 'Carregando contatos…';
-
-  const data = await fetchData();
-  if (!data) return;
-
-  // Atualizar timestamp
-  const timestamp = formatDate(data.lastFetched);
-  LAST_UPDATED.textContent = timestamp;
-  FOOTER_LAST.textContent = timestamp;
-
-  // Renderizar seções
-  renderPlans(data.plans);
-  renderComparisonTable(data.plans);
-  renderContacts(data.contacts);
-}
-
-/**
- * Configura intervalo de atualização automática
- */
-function setupAutoRefresh() {
-  if (refreshIntervalId) clearInterval(refreshIntervalId);
-
-  const interval = parseInt(REFRESH_INTERVAL_SELECT.value);
-  if (interval === 0) return;
-
-  refreshIntervalId = setInterval(() => {
-    console.log(`[Auto-refresh] Atualizando dados (intervalo: ${interval} min)`);
-    loadData();
-  }, interval * 60 * 1000);
-}
-
-/**
- * Event listeners
- */
-REFRESH_INTERVAL_SELECT.addEventListener('change', setupAutoRefresh);
-
-/**
- * Inicialização
- */
-document.addEventListener('DOMContentLoaded', () => {
-  loadData();
-  setupAutoRefresh();
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
 
