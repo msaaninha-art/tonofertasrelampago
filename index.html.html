@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TonVendas — Maquininhas Ton Oficiais | Frete Grátis Brasil 🚀</title>
+  <meta name="description" content="Adquira sua maquininha Ton com as melhores taxas do mercado. T2, T3 e T3 Smart com frete grátis para todo o Brasil." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ton-green: #00D563;
+      --ton-dark-green: #00A84F;
+      --ton-light-green: #E5FFF3;
+      --bg: #FAFAFA;
+      --card: #FFFFFF;
+      --text-primary: #1A1A1A;
+      --text-secondary: #666666;
+      --text-muted: #999999;
+      --border: #E5E5E5;
+      --max-width: 1200px;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 8px 32px rgba(0, 213, 99, 0.15);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      color: white;
+      padding: 32px 0;
+      box-shadow: 0 4px 16px rgba(0, 213, 99, 0.2);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-emoji {
+      font-size: 36px;
+      margin-right: 8px;
+    }
+
+    .tagline {
+      font-size: 16px;
+      opacity: 0.95;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--ton-light-green) 100%);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      margin: 32px 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 3px solid var(--ton-green);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 213, 99, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-banner h2 {
+      font-size: 36px;
+      color: var(--ton-dark-green);
+      margin-bottom: 16px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      position: relative;
+    }
+
+    .hero-banner p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .promo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #FF3B30 0%, #FF6B5E 100%);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      animation: pulse 2s infinite;
+      box-shadow: 0 4px 16px rgba(255, 59, 48, 0.3);
+      position: relative;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .benefits-section {
+      margin: 48px 0;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 32px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .benefit-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--ton-green);
+    }
+
+    .benefit-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .benefit-description {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .products-section {
+      margin: 48px 0;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--ton-green);
+    }
+
+    .product-image-wrapper {
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 260px;
+      position: relative;
+    }
+
+    .product-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: white;
+      color: var(--ton-green);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .product-content {
+      padding: 28px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ton-dark-green);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .product-slogan {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .features-list {
+      list-style: none;
+      margin: 20px 0;
+      flex: 1;
+    }
+
+    .features-list li {
+      padding: 10px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.5;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      color: var(--ton-green);
+      font-weight: 900;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .highlight-feature {
+      background: var(--ton-light-green);
+      padding: 16px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border-left: 4px solid var(--ton-green);
+    }
+
+    .highlight-feature strong {
+      color: var(--ton-dark-green);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .highlight-feature span {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .btn-primary {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 20px;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 213, 99, 0.4);
+    }
+
+    .comparison-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      margin: 48px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--ton-light-green);
+      color: var(--ton-dark-green);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    td:first-child {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    tr:hover {
+      background: var(--ton-light-green);
+    }
+
+    .mei-banner {
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      text-align: center;
+      margin: 48px 0;
+      box-shadow: 0 8px 32px rgba(0, 213, 99, 0.3);
+    }
+
+    .mei-banner h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .mei-banner p {
+      font-size: 18px;
+      margin-bottom: 12px;
+      opacity: 0.95;
+    }
+
+    .mei-banner .btn-primary {
+      max-width: 400px;
+      margin: 24px auto 0;
+      background: white;
+      color: var(--ton-green);
+    }
+
+    .mei-banner .btn-primary:hover {
+      background: #f0f0f0;
+    }
+
+    .site-footer {
+      background: var(--text-primary);
+      color: white;
+      padding: 48px 0;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      text-align: center;
+    }
+
+    .footer-content p {
+      margin: 8px 0;
+      opacity: 0.8;
+      font-size: 14px;
+    }
+
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 213, 99, 0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin: 8px;
+      font-size: 13px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      grid-column: 1 / -1;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      border: 4px solid var(--ton-light-green);
+      border-top-color: var(--ton-green);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading p {
+      margin-top: 20px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .brand {
+        font-size: 26px;
+      }
+
+      .tagline {
+        font-size: 14px;
+      }
+
+      .hero-banner {
+        padding: 32px 24px;
+      }
+
+      .hero-banner h2 {
+        font-size: 28px;
+      }
+
+      .hero-banner p {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .product-grid,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-section {
+        padding: 24px 16px;
+      }
+
+      table {
+        font-size: 13px;
+      }
+
+      th, td {
+        padding: 12px 8px;
+      }
+
+      .mei-banner {
+        padding: 32px 24px;
+      }
+
+      .mei-banner h2 {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <div>
+          <h1 class="brand">
+            <span class="brand-emoji">💚</span>TonVendas
+          </h1>
+          <p class="tagline">Maquininhas oficiais Ton com as melhores condições</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero-banner">
+      <span class="promo-badge">🔥 FRETE GRÁTIS PARA TODO O BRASIL</span>
+      <h2>Transforme Vendas em Oportunidades</h2>
+      <p>As melhores maquininhas do mercado com tecnologia Ton. Receba no mesmo dia e sem complicação!</p>
+    </div>
+
+    <section class="benefits-section">
+      <h2 class="section-title">✨ Por que escolher a Ton?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🚚</div>
+          <h3 class="benefit-title">Troca grátis e garantia vitalícia</h3>
+          <p class="benefit-description">Trocamos a sua maquininha sem você precisar sair de casa</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">📱</div>
+          <h3 class="benefit-title">Venda pelo App com TapTon, Link e Pix</h3>
+          <p class="benefit-description">Esqueceu a maquininha em casa? Venda em qualquer lugar usando seu celular</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3 class="benefit-title">Receba no mesmo dia</h3>
+          <p class="benefit-description">Escolha no app como prefere receber as suas vendas</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3 class="benefit-title">Tempo é dinheiro</h3>
+          <p class="benefit-description">Menos tempo perdido com burocracia, mais tempo vendendo. Com o Ton, você recebe com taxa baixa e sem complicação</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">📊</div>
+          <h3 class="benefit-title">Gestão fácil do MEI</h3>
+          <p class="benefit-description">Gere e pague seu DAS, acompanhe benefícios e cuide do MEI sem custos. Tudo no app onde você vende e recebe</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">📶</div>
+          <h3 class="benefit-title">Chip com internet ilimitada e grátis</h3>
+          <p class="benefit-description">Sem nenhum custo mensal adicional no seu bolso</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">👤</div>
+          <h3 class="benefit-title">Não precisa ter CNPJ</h3>
+          <p class="benefit-description">Ainda não tem uma empresa? O Ton é pra todos: PF, PJ ou MEI</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💚</div>
+          <h3 class="benefit-title">Aqui sua Maquininha não tem aluguel</h3>
+          <p class="benefit-description">Com o Ton você tem máquina de qualidade sem pesar no bolso</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💳</div>
+          <h3 class="benefit-title">Aceite as principais formas de pagamento</h3>
+          <p class="benefit-description">Aceita Mastercard, Visa, Elo, American Express, Apple Pay, Google Pay, Samsung Pay, Pix e muito mais</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section">
+      <h2 class="section-title">💳 Escolha sua Maquininha</h2>
+      <div class="product-grid" id="products-container">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Carregando maquininhas...</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="mei-banner">
+      <h2>🏆 Ton Max - Para MEI e PJ</h2>
+      <p>Condições especiais para quem é registrado!</p>
+      <p style="font-size: 16px; opacity: 0.9;">Taxas diferenciadas de acordo com suas vendas mensais</p>
+      <a href="https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonmaxmei_tier&utm_medium=invite_share&utm_source=revendedor" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn-primary">
+        🚀 Solicitar Ton Max MEI/PJ
+      </a>
+    </div>
+
+    <div class="comparison-section">
+      <h2 class="section-title">📊 Compare as Características</h2>
+      <div class="table-wrapper">
+        <table id="comparison-table">
+          <thead>
+            <tr>
+              <th>Modelo</th>
+              <th>Conectividade</th>
+              <th>Pagamento por aproximação</th>
+              <th>Comprovante</th>
+              <th>Diferencial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="5" style="text-align:center;padding:30px;">Carregando comparação...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <span class="footer-badge">✅ Dados sincronizados com www.ton.com.br</span>
+        <span class="footer-badge">🔄 Informações sempre atualizadas</span>
+      </div>
+      <p style="margin-top: 24px; font-size: 15px;">
+        <strong>TonVendas © 2025</strong> - Todos os direitos reservados
+      </p>
+      <p style="font-size: 13px; opacity: 0.7;">
+        Revendedor autorizado Ton. Links de compra vinculados.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const PRODUCTS_CONTAINER = document.getElementById('products-container');
+    const COMPARISON_TABLE = document.getElementById('comparison-table');
+
+    const PRODUCT_IMAGES = {
+      'T2': 'https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/optimized/ton/8974cebf-7526-48d4-a1ad-008e17a4aee4/maquininha-t2-right.webp',
+      'T3': 'https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp',
+      'T3 Smart': 'https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp'
+    };
+
+    const PRODUCTS_DATA = [
+      {
+        id: 'T2',
+        name: 'T2',
+        fullName: 'Maquininha T2',
+        badge: 'COMPACTA',
+        slogan: 'A maquininha compacta que tá sempre com você',
+        connectivity: 'Chip 3G e Wi-Fi',
+        nfc: 'Sim',
+        receipt: 'SMS apenas',
+        features: [
+          'Frete e troca grátis pra todo o Brasil',
+          'Com Chip 3G e Wi-Fi',
+          'Receba por aproximação (NFC)',
+          'Comprovante por SMS',
+          'Venda pelo App com TapTon, Link e Pix',
+          'Aceite Pix na Maquininha',
+          'Chip com internet ilimitada e grátis',
+          'Garantia ilimitada'
+        ],
+        highlight: {
+          title: '📱 Ideal para vendas móveis',
+          description: 'Perfeita para quem está sempre em movimento'
+        },
+        buyLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_D195_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+      },
+      {
+        id: 'T3',
+        name: 'T3',
+        fullName: 'Maquininha T3',
+        badge: 'POPULAR',
+        slogan: 'A maquininha parceira do empreendedor brasileiro',
+        connectivity: 'Chip 3G e Wi-Fi',
+        nfc: 'Sim',
+        receipt: 'Impresso ou SMS',
+        features: [
+          'Frete e troca grátis pra todo o Brasil',
+          'Com Chip 3G e Wi-Fi',
+          'Receba por aproximação (NFC)',
+          'Comprovante impresso ou SMS',
+          'Venda pelo App com TapTon, Link e Pix',
+          'Aceite Pix na Maquininha',
+          'Chip com internet ilimitada e grátis',
+          'Garantia ilimitada'
+        ],
+        highlight: {
+          title: '🖨️ Com impressora integrada',
+          description: 'Emita comprovantes impressos para seus clientes'
+        },
+        buyLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_S920_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+      },
+      {
+        id: 'T3-Smart',
+        name: 'T3 Smart',
+        fullName: 'Maquininha T3 Smart',
+        badge: 'PREMIUM',
+        slogan: 'A maquininha Android, mais rápida e com melhor bateria',
+        connectivity: 'Chip 4G e Wi-Fi',
+        nfc: 'Sim',
+        receipt: 'Impresso ou SMS',
+        features: [
+          'Frete e troca grátis pra todo o Brasil',
+          'Com Chip 4G e Wi-Fi',
+          'Receba por aproximação (NFC)',
+          'Comprovante impresso ou SMS',
+          'Venda pelo App com TapTon, Link e Pix',
+          'Aceite Pix na Maquininha',
+          'Bateria de longa duração',
+          'Sistema Android com Visor Touchscreen',
+          'Chip com internet 4G ilimitada e grátis',
+          'Garantia ilimitada'
+        ],
+        highlight: {
+          title: '🚀 Tecnologia Android avançada',
+          description: 'Tela touchscreen colorida, bateria de longa duração e conexão 4G'
+        },
+        buyLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_SMART_POS_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+      }
+    ];
+
+    function renderProducts(products) {
+      if (!products || products.length === 0) {
+        PRODUCTS_CONTAINER.innerHTML = `
+          <div style="text-align:center;color:#666;padding:40px;grid-column:1/-1;">
+            <p>Nenhum produto disponível no momento.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const html = products.map(product => {
+        const imageSrc = PRODUCT_IMAGES[product.name] || PRODUCT_IMAGES['T3 Smart'];
+        
+        return `
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <span class="product-badge">${product.badge}</span>
+              <img src="${imageSrc}" alt="${product.fullName}" class="product-image" loading="lazy">
+            </div>
+            <div class="product-content">
+              <h3 class="product-name">${product.fullName}</h3>
+              <p class="product-slogan">${product.slogan}</p>
+              
+              <ul class="features-list">
+                ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+              </ul>
+
+              <div class="highlight-feature">
+                <strong>${product.highlight.title}</strong>
+                <span>${product.highlight.description}</span>
+              </div>
+
+              <a href="${product.buyLink}" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="btn-primary">
+                🛒 Pedir ${product.name}
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      PRODUCTS_CONTAINER.innerHTML = html;
+    }
+
+    function renderComparisonTable(products) {
+      if (!products || products.length === 0) {
+        return;
+      }
+
+      const tbody = products.map(product => `
+        <tr>
+          <td><strong>${product.fullName}</strong></td>
+          <td>${product.connectivity}</td>
+          <td>${product.nfc}</td>
+          <td>${product.receipt}</td>
+          <td>${product.highlight.title}</td>
+        </tr>
+      `).join('');
+
+      const thead = COMPARISON_TABLE.querySelector('thead');
+      
+      COMPARISON_TABLE.innerHTML = `
+        ${thead.outerHTML}
+        <tbody>${tbody}</tbody>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('✅ TonVendas inicializado - Dados sincronizados com Ton oficial');
+      
+      setTimeout(() => {
+        renderProducts(PRODUCTS_DATA);
+        renderComparisonTable(PRODUCTS_DATA);
+        console.log('✅ Produtos carregados com sucesso!');
+      }, 500);
+    });
+  </script>
+</body>
+</html>
