@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TonVendas — Maquininhas com Taxas Imbatíveis 🔥</title>
+  <meta name="description" content="As melhores maquininhas Ton com taxas atualizadas. Promoção relâmpago! T2, T3 e T3 Smart." />
+  <style>
+    :root {
+      --ton-green: #00D563;
+      --ton-dark-green: #00A84F;
+      --bg: #f5f5f5;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --max-width: 1200px;
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    .site-header {
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 213, 99, 0.2);
+    }
+
+    .brand {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .tagline {
+      font-size: 18px;
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin: 30px 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 3px solid var(--ton-green);
+    }
+
+    .hero-banner h2 {
+      font-size: 32px;
+      color: var(--ton-dark-green);
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .hero-banner p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .promo-badge {
+      display: inline-block;
+      background: #FF3B30;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Product Cards */
+    .products-section {
+      margin: 40px 0;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 213, 99, 0.2);
+      border-color: var(--ton-green);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #00D563 0%, #00A84F 100%);
+    }
+
+    .product-content {
+      padding: 25px;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ton-dark-green);
+      margin-bottom: 10px;
+    }
+
+    .product-slogan {
+      font-size: 14px;
+      color: var(--ton-green);
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .price-section {
+      background: #f0fff4;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      border-left: 4px solid var(--ton-green);
+    }
+
+    .price-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .price-item {
+      text-align: center;
+    }
+
+    .price-type {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .price-value {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ton-dark-green);
+    }
+
+    .promo-note {
+      font-size: 11px;
+      color: #FF3B30;
+      font-weight: 600;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .features-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .features-list li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: #4a4a4a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .features-list li:before {
+      content: "✓";
+      color: var(--ton-green);
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn-primary {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 213, 99, 0.4);
+    }
+
+    /* MEI/PJ Banner */
+    .mei-pj-banner {
+      background: linear-gradient(135deg, #00D563 0%, #00A84F 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: 0 8px 24px rgba(0, 213, 99, 0.3);
+    }
+
+    .mei-pj-banner h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .mei-pj-banner p {
+      font-size: 18px;
+      margin-bottom: 10px;
+      opacity: 0.95;
+    }
+
+    .mei-pj-note {
+      font-size: 14px;
+      margin: 20px 0;
+      opacity: 0.9;
+    }
+
+    /* Comparison Table */
+    .comparison-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f0fff4;
+      color: var(--ton-dark-green);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      font-size: 14px;
+    }
+
+    tr:hover {
+      background: #f9fafb;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #1a1a1a;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-content small {
+      display: block;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .brand {
+        font-size: 28px;
+      }
+
+      .tagline {
+        font-size: 16px;
+      }
+
+      .hero-banner {
+        padding: 25px;
+      }
+
+      .hero-banner h2 {
+        font-size: 24px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 10px;
+      }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">🚀 TonVendas</h1>
+      <p class="tagline">As Melhores Maquininhas com Taxas que Cabem no Seu Bolso</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <span class="promo-badge">🔥 PROMOÇÃO RELÂMPAGO</span>
+      <h2>Transforme Seu Negócio com as Maquininhas Ton</h2>
+      <p>Taxas competitivas, tecnologia de ponta e suporte completo para você vender mais!</p>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section">
+      <h2 class="section-title">💳 Nossas Maquininhas</h2>
+      <div class="product-grid" id="products-container">
+        <div style="text-align:center;padding:40px;grid-column:1/-1;">
+          <div style="display:inline-block;width:40px;height:40px;border:4px solid #00D563;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;"></div>
+          <p style="margin-top:20px;color:#666;">Carregando produtos...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEI/PJ Banner -->
+    <div class="mei-pj-banner">
+      <h2>🏆 Ton Max - MEI e PJ</h2>
+      <p>Condições especiais para quem é registrado!</p>
+      <p class="mei-pj-note">Taxas de acordo com suas vendas mensais</p>
+      <a href="https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonmaxmei_tier&utm_medium=invite_share&utm_source=revendedor" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn-primary" 
+         style="max-width: 300px; margin: 20px auto; display: block;">
+        Peça já sua Maquininha MEI/PJ
+      </a>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="comparison-section">
+      <h2 class="section-title">📊 Compare os Planos</h2>
+      <div class="table-wrapper">
+        <table id="comparison-table">
+          <thead>
+            <tr>
+              <th>Modelo</th>
+              <th>Pix</th>
+              <th>Débito</th>
+              <th>Crédito</th>
+              <th>12x</th>
+              <th>Promoção</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="6" style="text-align:center;padding:30px;">Carregando dados...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <small>✅ Dados sincronizados automaticamente de www.ton.com.br</small>
+      <small>🔄 Atualizado com as últimas taxas oficiais</small>
+      <p style="margin-top: 10px; opacity: 0.7;">
+        TonVendas © 2025 - Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
