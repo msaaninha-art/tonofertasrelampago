@@ -3,145 +3,343 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TonVendas — Planos e Maquininhas Promoção Relampago</title>
-  <meta name="description" content="Compare e escolha a maquininha Ton com taxas atualizadas automaticamente. Links de revendedora exclusivos." />
+  <title>TonVendas — Maquininhas com Taxas Imbatíveis 🔥</title>
+  <meta name="description" content="As melhores maquininhas Ton com taxas atualizadas automaticamente. Promoção relâmpago! T2 Max, T3 Max e T3 Smart Max." />
   <style>
     :root {
-      --ton-green: #2b9c68;
-      --bg: #f7fafc;
+      --ton-green: #00D563;
+      --ton-dark-green: #00A84F;
+      --bg: #f5f5f5;
       --card: #ffffff;
       --muted: #6b7280;
       --accent: #0f766e;
-      --max-width: 1100px;
-      --radius: 12px;
-      --shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --max-width: 1200px;
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       margin: 0;
       background: var(--bg);
-      color: #0f172a;
+      color: #1a1a1a;
+      line-height: 1.6;
     }
 
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 24px;
+      padding: 20px;
     }
 
+    /* Header */
     .site-header {
-      padding: 18px 0;
-      margin-bottom: 18px;
-      background: white;
-      border-bottom: 1px solid #e5e7eb;
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 213, 99, 0.2);
     }
 
     .brand {
-      margin: 0;
-      font-size: 22px;
-      color: var(--ton-green);
-      font-weight: 700;
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .tagline {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-    }
-
-    .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .right {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .plan-card {
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid #eef6f0;
-      background: linear-gradient(180deg, #ffffff, #fbfff9);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 160px;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .plan-card:hover {
-      box-shadow: 0 8px 24px rgba(43, 156, 104, 0.12);
-    }
-
-    .plan-name {
-      font-weight: 700;
-      color: #053e2b;
-      margin-bottom: 6px;
-      font-size: 16px;
-    }
-
-    .plan-price {
       font-size: 18px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
+      opacity: 0.95;
+      font-weight: 500;
     }
 
-    .plan-features {
-      margin: 8px 0;
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin: 30px 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 3px solid var(--ton-green);
+    }
+
+    .hero-banner h2 {
+      font-size: 32px;
+      color: var(--ton-dark-green);
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .hero-banner p {
+      font-size: 18px;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
-    .plan-slogan {
-      color: var(--ton-green);
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .btn {
+    .promo-badge {
       display: inline-block;
-      padding: 10px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      background: var(--ton-green);
+      background: #FF3B30;
       color: white;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      width: 100%;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Product Cards */
+    .products-section {
+      margin: 40px 0;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 30px;
       text-align: center;
     }
 
-    .btn:hover {
-      background: #228a56;
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 213, 99, 0.2);
+      border-color: var(--ton-green);
+    }
+
+    .product-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: linear-gradient(135deg, #00D563 0%, #00A84F 100%);
+    }
+
+    .product-content {
+      padding: 25px;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ton-dark-green);
+      margin-bottom: 10px;
+    }
+
+    .product-slogan {
+      font-size: 14px;
+      color: var(--ton-green);
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .price-section {
+      background: #f0fff4;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      border-left: 4px solid var(--ton-green);
+    }
+
+    .price-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .price-item {
+      text-align: center;
+    }
+
+    .price-type {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .price-value {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ton-dark-green);
+    }
+
+    .features-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .features-list li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: #4a4a4a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .features-list li:before {
+      content: "✓";
+      color: var(--ton-green);
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn-primary {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 213, 99, 0.4);
+    }
+
+    /* Special Features Section */
+    .special-features {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ton-dark-green);
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* MEI/PJ Special Section */
+    .mei-pj-banner {
+      background: linear-gradient(135deg, #00D563 0%, #00A84F 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: 0 8px 24px rgba(0, 213, 99, 0.3);
+    }
+
+    .mei-pj-banner h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .mei-pj-banner p {
+      font-size: 18px;
+      margin-bottom: 10px;
+      opacity: 0.95;
+    }
+
+    .mei-pj-prices {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .mei-pj-price-box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 15px 30px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .mei-pj-price-label {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .mei-pj-price-value {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    /* Comparison Table */
+    .comparison-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: var(--shadow);
     }
 
     .table-wrapper {
@@ -151,76 +349,54 @@
     table {
       width: 100%;
       border-collapse: collapse;
+      margin-top: 20px;
     }
 
-    th,
-    td {
-      padding: 10px;
-      border-bottom: 1px solid #eef2f3;
+    th, td {
+      padding: 15px;
       text-align: left;
-      font-size: 14px;
+      border-bottom: 1px solid #e5e7eb;
     }
 
     th {
-      background: #f9fafb;
-      font-weight: 600;
-      color: #374151;
+      background: #f0fff4;
+      color: var(--ton-dark-green);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      font-size: 14px;
     }
 
     tr:hover {
       background: #f9fafb;
     }
 
-    .site-footer {
-      margin-top: 18px;
-      padding: 14px 0;
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-      border-top: 1px solid #e5e7eb;
-    }
-
-    .muted {
-      color: var(--muted);
-      margin: 8px 0 0;
-    }
-
-    .contact-item {
-      margin-bottom: 16px;
-    }
-
-    .contact-label {
-      font-weight: 600;
-      color: var(--ton-green);
+    /* Controls */
+    .controls-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .contact-value {
-      color: var(--muted);
-      margin-left: 24px;
-      line-height: 1.6;
-    }
-
-    .contact-value a {
-      color: var(--ton-green);
-      text-decoration: none;
-    }
-
-    .contact-value a:hover {
-      text-decoration: underline;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     select {
-      padding: 8px 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
+      padding: 10px 15px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
       font-size: 14px;
       background: white;
-      color: #1f2937;
       cursor: pointer;
+      transition: border-color 0.3s ease;
     }
 
     select:hover {
@@ -230,262 +406,264 @@
     select:focus {
       outline: none;
       border-color: var(--ton-green);
-      box-shadow: 0 0 0 3px rgba(43, 156, 104, 0.1);
+      box-shadow: 0 0 0 3px rgba(0, 213, 99, 0.1);
     }
 
-    h2 {
-      font-size: 20px;
+    .last-update {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .contact-item {
+      padding: 20px;
+      background: #f9fafb;
+      border-radius: 10px;
+      border-left: 4px solid var(--ton-green);
+    }
+
+    .contact-label {
       font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 16px;
+      color: var(--ton-dark-green);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    @media (max-width: 640px) {
-      .row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .contact-value {
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-      .container {
-        padding: 16px;
-      }
+    .contact-value a {
+      color: var(--ton-green);
+      text-decoration: none;
+      font-weight: 600;
+    }
 
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #1a1a1a;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-content small {
+      display: block;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
       .brand {
-        font-size: 20px;
+        font-size: 28px;
       }
 
-      .grid {
+      .tagline {
+        font-size: 16px;
+      }
+
+      .hero-banner {
+        padding: 25px;
+      }
+
+      .hero-banner h2 {
+        font-size: 24px;
+      }
+
+      .product-grid {
         grid-template-columns: 1fr;
+      }
+
+      .price-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mei-pj-prices {
+        flex-direction: column;
+        gap: 15px;
       }
 
       table {
         font-size: 12px;
       }
 
-      th,
-      td {
-        padding: 8px;
+      th, td {
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="container">
-      <h1 class="brand">TonVendas</h1>
-      <p class="tagline">Planos Ton atualizados automaticamente — revendedora: Ana</p>
+      <h1 class="brand">🚀 TonVendas</h1>
+      <p class="tagline">As Melhores Maquininhas com Taxas que Cabem no Seu Bolso</p>
     </div>
   </header>
 
   <main class="container">
-    <section id="controls" class="card">
-      <div class="row">
-        <div>
-          <label for="refresh-interval">Atualização automática:</label>
-          <select id="refresh-interval">
-            <option value="30">30 min</option>
-            <option value="15" selected>15 min</option>
-            <option value="60">60 min</option>
-            <option value="0">Off</option>
-          </select>
-        </div>
-        <div class="right">
-          <span id="last-updated">Última atualização: —</span>
-        </div>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <span class="promo-badge">🔥 PROMOÇÃO RELÂMPAGO</span>
+      <h2>Transforme Seu Negócio com as Maquininhas Ton</h2>
+      <p>Taxas competitivas, tecnologia de ponta e suporte completo para você vender mais!</p>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-card">
+      <div>
+        <label for="refresh-interval" style="font-weight: 600; margin-right: 10px;">⏱️ Atualização automática:</label>
+        <select id="refresh-interval">
+          <option value="30">A cada 30 minutos</option>
+          <option value="15" selected>A cada 15 minutos</option>
+          <option value="60">A cada 60 minutos</option>
+          <option value="0">Desativado</option>
+        </select>
+      </div>
+      <div class="last-update">
+        <span id="last-updated">Última atualização: Carregando...</span>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section">
+      <h2 class="section-title">💳 Nossas Maquininhas</h2>
+      <div class="product-grid" id="products-container">
+        <!-- Os produtos serão inseridos aqui via JavaScript -->
       </div>
     </section>
 
-    <section id="plans" class="grid card">
-      <h2>Planos e Maquininhas</h2>
-      <div id="plans-list"></div>
-    </section>
-
-    <section id="compare" class="card">
-      <h2>Comparação rápida</h2>
-      <div id="compare-table" class="table-wrapper"></div>
-    </section>
-
-    <section id="contact" class="card">
-      <h2>Contato & Suporte</h2>
-      <div id="contact-list"></div>
-    </section>
-
-    <footer class="site-footer">
-      <div class="container">
-        <small>Dados obtidos a partir de www.ton.com.br — Atualizações automáticas a cada 15 minutos.</small>
-        <p class="muted">Último fetch: <span id="footer-last">—</span></p>
+    <!-- MEI/PJ Banner -->
+    <div class="mei-pj-banner">
+      <h2>🏆 A Maquininha Mais Barata do Brasil para MEI e PJ</h2>
+      <p>Condições especiais para quem é registrado!</p>
+      <div class="mei-pj-prices">
+        <div class="mei-pj-price-box">
+          <div class="mei-pj-price-label">Débito</div>
+          <div class="mei-pj-price-value">0,59%</div>
+        </div>
+        <div class="mei-pj-price-box">
+          <div class="mei-pj-price-label">Crédito</div>
+          <div class="mei-pj-price-value">0,59%</div>
+        </div>
+        <div class="mei-pj-price-box">
+          <div class="mei-pj-price-label">Crédito 12x</div>
+          <div class="mei-pj-price-value">7,99%</div>
+        </div>
       </div>
-    </footer>
+      <a href="#" class="btn-primary" style="max-width: 300px; margin: 20px auto; display: block;">
+        Peça já sua Maquininha MEI/PJ
+      </a>
+    </div>
+
+    <!-- Special Features -->
+    <div class="special-features">
+      <h2 class="section-title">✨ Por Dentro da T3 Smart</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">🔋</div>
+          <div class="feature-title">Bateria de Longa Duração</div>
+          <div class="feature-desc">Não fique sem bateria na hora de vender</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Rápida e Inteligente</div>
+          <div class="feature-desc">Sistema operacional Android</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">Chip 4G Grátis</div>
+          <div class="feature-desc">Sem nenhum custo adicional</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📡</div>
+          <div class="feature-title">Conexão Wi-Fi</div>
+          <div class="feature-desc">Conecte em qualquer lugar</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">Bobina Grátis</div>
+          <div class="feature-desc">Imprima ou envie por SMS o comprovante</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📲</div>
+          <div class="feature-title">Receba por NFC</div>
+          <div class="feature-desc">Venda mais rápido e diminua as filas</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">💰</div>
+          <div class="feature-title">Receba por Pix</div>
+          <div class="feature-desc">QR Code ou Pix por aproximação</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">Tela Touch</div>
+          <div class="feature-desc">Sistema Android com visor touchscreen</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="comparison-section">
+      <h2 class="section-title">📊 Compare os Planos</h2>
+      <div class="table-wrapper">
+        <table id="comparison-table">
+          <!-- Tabela será preenchida via JavaScript -->
+        </table>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <h2 class="section-title">📞 Contato & Suporte</h2>
+      <div class="contact-grid" id="contact-container">
+        <!-- Contatos serão inseridos via JavaScript -->
+      </div>
+    </div>
   </main>
 
-  <script>
-    // Dados mock para demonstração
-    const mockData = {
-      lastFetched: new Date().toISOString(),
-      plans: [
-        {
-          id: 'plan-0',
-          title: 'T3 Smart Ton Pro',
-          features: ['Máquina de cartão', 'Suporte 24/7', 'Recebimento em 1 dia'],
-          slogan: 'A melhor solução para profissionais',
-          description: 'Máquina de cartão moderna com tecnologia NFC',
-          productId: 'T3 Smart Pro',
-          link: 'https://www.ton.com.br/maquininha/t3-smart?srsltid=AfmBOopvPzknvqOchacT2zLzWJ3VZQ-V9DldJiyBwneGjyvYyeykOOpJ',
-          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_SMART_POS_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
-        },
-        {
-          id: 'plan-1',
-          title: 'T3 Smart MEI e PJ',
-          features: ['Ideal para MEI', 'Antifraude', 'Consulta de saldo'],
-          slogan: 'Perfeito para pequenos negócios',
-          description: 'Solução completa para microempreendedores',
-          productId: 'T3 Smart MEI e PJ',
-          link: 'https://www.ton.com.br/MEI-PJ?srsltid=AfmBOop1oM9Tdu9MRjvqPZFkaXX7Ut39YKS-8eKP2IN41DdPiqJrMW9H',
-          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonmaxmei_tier&utm_medium=invite_share&utm_source=revendedor'
-        },
-        {
-          id: 'plan-2',
-          title: 'T3 Ton Pró',
-          features: ['Melhor taxa', 'Sem taxas de cancelamento', 'Programa de fidelidade'],
-          slogan: 'O plano mais completo',
-          description: 'Máquina com as melhores funcionalidades',
-          productId: 'T3 Ton Pró',
-          link: 'https://www.ton.com.br/?srsltid=AfmBOooOBWYonXn3P9sg6lkijb2we1MhxAXBCaVSbHDzEfsXgnC7LGD-',
-          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_S920_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
-        },
-        {
-          id: 'plan-2',
-          title: 'T2 Ton Pró',
-          features: ['Melhor taxa', 'Sem taxas de cancelamento', 'Programa de fidelidade'],
-          slogan: 'O plano mais completo',
-          description: 'Máquina com boas funcionalidades, simples e prática',
-          productId: 'T2 Ton Pró',
-          link: 'https://www.ton.com.br/?srsltid=AfmBOooOBWYonXn3P9sg6lkijb2we1MhxAXBCaVSbHDzEfsXgnC7LGD-',
-          sellerLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_D195_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
-        }
-      ],
-      contacts: {
-        phones: ['(11) 3000-0000', '(11) 3000-0001'],
-        emails: ['suporte@ton.com.br', 'vendas@ton.com.br'],
-        helpLinks: ['https://ton.com.br/ajuda', 'https://api.whatsapp.com/send?phone=5511999999999']
-      }
-    };
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <small>✅ Dados obtidos automaticamente de www.ton.com.br</small>
+      <small>🔄 Atualizações automáticas a cada 15 minutos</small>
+      <p style="margin-top: 10px; opacity: 0.7;">
+        <span id="footer-last">Último fetch: Carregando...</span>
+      </p>
+    </div>
+  </footer>
 
-    const LAST_UPDATED = document.getElementById('last-updated');
-    const FOOTER_LAST = document.getElementById('footer-last');
-    const PLANS_LIST = document.getElementById('plans-list');
-    const COMPARE_TABLE = document.getElementById('compare-table');
-    const CONTACT_LIST = document.getElementById('contact-list');
-
-    function formatDate(isoString) {
-      if (!isoString) return '—';
-      const date = new Date(isoString);
-      return date.toLocaleString('pt-BR');
-    }
-
-    function renderPlans(data) {
-      PLANS_LIST.innerHTML = data.plans
-        .map(
-          (plan) => `
-        <div class="plan-card">
-          <div>
-            <div class="plan-slogan">${plan.slogan}</div>
-            <div class="plan-name">${plan.title}</div>
-            <div class="plan-price">${plan.rate}</div>
-            <div class="plan-features">${plan.features.join(' • ')}</div>
-          </div>
-          <a href="${plan.sellerLink || plan.link}" target="_blank" rel="noopener noreferrer" class="btn">
-            Assine agora
-          </a>
-        </div>
-      `
-        )
-        .join('');
-    }
-
-    function renderComparisonTable(data) {
-      COMPARE_TABLE.innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th>Plano</th>
-              <th>Taxa</th>
-              <th>Benefícios</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${data.plans
-              .map(
-                (plan) => `
-                <tr>
-                  <td><strong>${plan.title}</strong></td>
-                  <td style="color: var(--ton-green); font-weight: 600;">${plan.rate}</td>
-                  <td>${plan.features?.join(', ') || plan.description || '—'}</td>
-                </tr>
-              `
-              )
-              .join('')}
-          </tbody>
-        </table>
-      `;
-    }
-
-    function renderContacts(data) {
-      let html = '';
-      if (data.contacts.phones && data.contacts.phones.length > 0) {
-        html += `
-          <div class="contact-item">
-            <div class="contact-label">📞 Telefone</div>
-            <div class="contact-value">
-              ${data.contacts.phones.map((phone) => `<div>${phone}</div>`).join('')}
-            </div>
-          </div>
-        `;
-      }
-      if (data.contacts.emails && data.contacts.emails.length > 0) {
-        html += `
-          <div class="contact-item">
-            <div class="contact-label">✉️ E-mail</div>
-            <div class="contact-value">
-              ${data.contacts.emails.map((email) => `<div><a href="mailto:${email}">${email}</a></div>`).join('')}
-            </div>
-          </div>
-        `;
-      }
-      if (data.contacts.helpLinks && data.contacts.helpLinks.length > 0) {
-        html += `
-          <div class="contact-item">
-            <div class="contact-label">🔗 Links de Suporte</div>
-            <div class="contact-value">
-              ${data.contacts.helpLinks.map((link) => `<div><a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a></div>`).join('')}
-            </div>
-          </div>
-        `;
-      }
-      CONTACT_LIST.innerHTML = html;
-    }
-
-    // Função para carregar dados (usando mockData para esta demo)
-    async function loadData() {
-      const data = mockData; // Usando mockData diretamente
-      LAST_UPDATED.textContent = formatDate(data.lastFetched);
-      FOOTER_LAST.textContent = formatDate(data.lastFetched);
-      renderPlans(data);
-      renderComparisonTable(data);
-      renderContacts(data);
-    }
-
-    // Inicialização
-    document.addEventListener('DOMContentLoaded', loadData);
-
-    // Configura o intervalo de atualização (ainda que para mockData, mantém a estrutura)
-    const REFRESH_INTERVAL_SELECT = document.getElementById('refresh-interval');
-    REFRESH_INTERVAL_SELECT.addEventListener('change', () => {
-      const interval = parseInt(REFRESH_INTERVAL_SELECT.value);
-      console.log(`Intervalo de atualização selecionado: ${interval} minutos`);
-      // Em uma aplicação real, isso reiniciaria um timer para buscar dados da API
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
-
