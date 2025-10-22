@@ -10,9 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ton-green: #00D563;
+      /* Cores oficiais Ton conforme guidelines */
+      --ton-green: #00D700;
       --ton-dark-green: #00A84F;
       --ton-light-green: #E5FFF3;
+      --ton-black: #1A1A1A;
       --bg: #FAFAFA;
       --card: #FFFFFF;
       --text-primary: #1A1A1A;
@@ -22,7 +24,7 @@
       --max-width: 1200px;
       --radius: 16px;
       --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-      --shadow-hover: 0 8px 32px rgba(0, 213, 99, 0.15);
+      --shadow-hover: 0 8px 32px rgba(0, 215, 0, 0.15);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -50,7 +52,7 @@
       background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
       color: white;
       padding: 32px 0;
-      box-shadow: 0 4px 16px rgba(0, 213, 99, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 215, 0, 0.2);
     }
 
     .header-content {
@@ -98,7 +100,7 @@
       right: -10%;
       width: 300px;
       height: 300px;
-      background: radial-gradient(circle, rgba(0, 213, 99, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0, 215, 0, 0.1) 0%, transparent 70%);
       border-radius: 50%;
     }
 
@@ -138,7 +140,7 @@
       50% { transform: scale(1.05); }
     }
 
-    .benefits-section {
+    .products-section {
       margin: 48px 0;
     }
 
@@ -151,51 +153,6 @@
       letter-spacing: -0.5px;
     }
 
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-
-    .benefit-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid transparent;
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--ton-green);
-    }
-
-    .benefit-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-    }
-
-    .benefit-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .benefit-description {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    .products-section {
-      margin: 48px 0;
-    }
-
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -203,6 +160,116 @@
       margin-bottom: 48px;
     }
 
+    /* CARD PREMIUM - T3 SMART EM DESTAQUE */
+    .product-card.featured {
+      grid-column: 1 / -1;
+      max-width: 100%;
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      border: 4px solid var(--ton-green);
+      box-shadow: 0 12px 48px rgba(0, 215, 0, 0.4);
+      transform: scale(1.02);
+      position: relative;
+      overflow: visible;
+    }
+
+    .product-card.featured::before {
+      content: '⭐ MAIS VENDIDA ⭐';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      color: var(--ton-black);
+      padding: 10px 32px;
+      border-radius: 50px;
+      font-weight: 900;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(255, 215, 0, 0.5);
+      z-index: 10;
+    }
+
+    .product-card.featured .product-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 48px 40px;
+      color: white;
+    }
+
+    .product-card.featured .product-name {
+      color: white;
+      font-size: 42px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card.featured .product-slogan {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 18px;
+    }
+
+    .product-card.featured .features-list li {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .product-card.featured .features-list li::before {
+      color: #FFD700;
+      font-size: 22px;
+    }
+
+    .product-card.featured .highlight-feature {
+      background: rgba(255, 255, 255, 0.15);
+      border-left-color: #FFD700;
+      backdrop-filter: blur(10px);
+    }
+
+    .product-card.featured .highlight-feature strong {
+      color: white;
+      font-size: 18px;
+    }
+
+    .product-card.featured .highlight-feature span {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+    }
+
+    .product-card.featured .btn-primary {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      color: var(--ton-black);
+      font-size: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4);
+    }
+
+    .product-card.featured .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.6);
+    }
+
+    .product-card.featured .product-image-wrapper {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+    }
+
+    .product-card.featured .product-badge {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      color: var(--ton-black);
+      font-size: 14px;
+      padding: 10px 20px;
+      font-weight: 900;
+    }
+
+    /* CARDS NORMAIS */
     .product-card {
       background: white;
       border-radius: var(--radius);
@@ -337,7 +404,86 @@
 
     .btn-primary:hover {
       transform: scale(1.02);
-      box-shadow: 0 8px 24px rgba(0, 213, 99, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 215, 0, 0.4);
+    }
+
+    .mei-banner {
+      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      text-align: center;
+      margin: 48px 0;
+      box-shadow: 0 8px 32px rgba(0, 215, 0, 0.3);
+    }
+
+    .mei-banner h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .mei-banner p {
+      font-size: 18px;
+      margin-bottom: 12px;
+      opacity: 0.95;
+    }
+
+    .mei-banner .btn-primary {
+      max-width: 400px;
+      margin: 24px auto 0;
+      background: white;
+      color: var(--ton-green);
+    }
+
+    .mei-banner .btn-primary:hover {
+      background: #f0f0f0;
+    }
+
+    .benefits-section {
+      margin: 48px 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .benefit-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--ton-green);
+    }
+
+    .benefit-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .benefit-description {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
 
     .comparison-section {
@@ -387,42 +533,8 @@
       background: var(--ton-light-green);
     }
 
-    .mei-banner {
-      background: linear-gradient(135deg, var(--ton-green) 0%, var(--ton-dark-green) 100%);
-      color: white;
-      border-radius: var(--radius);
-      padding: 48px 40px;
-      text-align: center;
-      margin: 48px 0;
-      box-shadow: 0 8px 32px rgba(0, 213, 99, 0.3);
-    }
-
-    .mei-banner h2 {
-      font-size: 36px;
-      margin-bottom: 16px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-    }
-
-    .mei-banner p {
-      font-size: 18px;
-      margin-bottom: 12px;
-      opacity: 0.95;
-    }
-
-    .mei-banner .btn-primary {
-      max-width: 400px;
-      margin: 24px auto 0;
-      background: white;
-      color: var(--ton-green);
-    }
-
-    .mei-banner .btn-primary:hover {
-      background: #f0f0f0;
-    }
-
     .site-footer {
-      background: var(--text-primary);
+      background: var(--ton-black);
       color: white;
       padding: 48px 0;
       margin-top: 80px;
@@ -442,7 +554,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 213, 99, 0.2);
+      background: rgba(0, 215, 0, 0.2);
       padding: 8px 16px;
       border-radius: 20px;
       margin: 8px;
@@ -509,6 +621,30 @@
         grid-template-columns: 1fr;
       }
 
+      .product-card.featured {
+        grid-column: 1;
+      }
+
+      .product-card.featured::before {
+        font-size: 12px;
+        padding: 8px 20px;
+        top: -16px;
+      }
+
+      .product-card.featured .product-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 24px;
+      }
+
+      .product-card.featured .product-name {
+        font-size: 32px;
+      }
+
+      .product-card.featured .product-image-wrapper {
+        height: 300px;
+      }
+
       .comparison-section {
         padding: 24px 16px;
       }
@@ -527,13 +663,6 @@
 
       .mei-banner h2 {
         font-size: 28px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .product-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
       }
     }
   </style>
@@ -557,6 +686,28 @@
       <span class="promo-badge">🔥 FRETE GRÁTIS PARA TODO O BRASIL</span>
       <h2>Transforme Vendas em Oportunidades</h2>
       <p>As melhores maquininhas do mercado com tecnologia Ton. Receba no mesmo dia e sem complicação!</p>
+    </div>
+
+    <section class="products-section">
+      <h2 class="section-title">💳 Escolha sua Maquininha</h2>
+      <div class="product-grid" id="products-container">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Carregando maquininhas...</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="mei-banner">
+      <h2>🏆 Ton Max - Para MEI e PJ</h2>
+      <p>Condições especiais para quem é registrado!</p>
+      <p style="font-size: 16px; opacity: 0.9;">Taxas diferenciadas de acordo com suas vendas mensais</p>
+      <a href="https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonmaxmei_tier&utm_medium=invite_share&utm_source=revendedor" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn-primary">
+        🚀 Solicitar Ton Max MEI/PJ
+      </a>
     </div>
 
     <section class="benefits-section">
@@ -618,28 +769,6 @@
       </div>
     </section>
 
-    <section class="products-section">
-      <h2 class="section-title">💳 Escolha sua Maquininha</h2>
-      <div class="product-grid" id="products-container">
-        <div class="loading">
-          <div class="spinner"></div>
-          <p>Carregando maquininhas...</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="mei-banner">
-      <h2>🏆 Ton Max - Para MEI e PJ</h2>
-      <p>Condições especiais para quem é registrado!</p>
-      <p style="font-size: 16px; opacity: 0.9;">Taxas diferenciadas de acordo com suas vendas mensais</p>
-      <a href="https://ton.com.br/checkout/cart/?productId=TONMAXMEI_TIER_SMART_POS&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonmaxmei_tier&utm_medium=invite_share&utm_source=revendedor" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="btn-primary">
-        🚀 Solicitar Ton Max MEI/PJ
-      </a>
-    </div>
-
     <div class="comparison-section">
       <h2 class="section-title">📊 Compare as Características</h2>
       <div class="table-wrapper">
@@ -688,57 +817,8 @@
       'T3 Smart': 'https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp'
     };
 
+    // T3 SMART SEMPRE PRIMEIRO!
     const PRODUCTS_DATA = [
-      {
-        id: 'T2',
-        name: 'T2',
-        fullName: 'Maquininha T2',
-        badge: 'COMPACTA',
-        slogan: 'A maquininha compacta que tá sempre com você',
-        connectivity: 'Chip 3G e Wi-Fi',
-        nfc: 'Sim',
-        receipt: 'SMS apenas',
-        features: [
-          'Frete e troca grátis pra todo o Brasil',
-          'Com Chip 3G e Wi-Fi',
-          'Receba por aproximação (NFC)',
-          'Comprovante por SMS',
-          'Venda pelo App com TapTon, Link e Pix',
-          'Aceite Pix na Maquininha',
-          'Chip com internet ilimitada e grátis',
-          'Garantia ilimitada'
-        ],
-        highlight: {
-          title: '📱 Ideal para vendas móveis',
-          description: 'Perfeita para quem está sempre em movimento'
-        },
-        buyLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_D195_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
-      },
-      {
-        id: 'T3',
-        name: 'T3',
-        fullName: 'Maquininha T3',
-        badge: 'POPULAR',
-        slogan: 'A maquininha parceira do empreendedor brasileiro',
-        connectivity: 'Chip 3G e Wi-Fi',
-        nfc: 'Sim',
-        receipt: 'Impresso ou SMS',
-        features: [
-          'Frete e troca grátis pra todo o Brasil',
-          'Com Chip 3G e Wi-Fi',
-          'Receba por aproximação (NFC)',
-          'Comprovante impresso ou SMS',
-          'Venda pelo App com TapTon, Link e Pix',
-          'Aceite Pix na Maquininha',
-          'Chip com internet ilimitada e grátis',
-          'Garantia ilimitada'
-        ],
-        highlight: {
-          title: '🖨️ Com impressora integrada',
-          description: 'Emita comprovantes impressos para seus clientes'
-        },
-        buyLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_S920_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
-      },
       {
         id: 'T3-Smart',
         name: 'T3 Smart',
@@ -748,6 +828,7 @@
         connectivity: 'Chip 4G e Wi-Fi',
         nfc: 'Sim',
         receipt: 'Impresso ou SMS',
+        featured: true,
         features: [
           'Frete e troca grátis pra todo o Brasil',
           'Com Chip 4G e Wi-Fi',
@@ -765,6 +846,58 @@
           description: 'Tela touchscreen colorida, bateria de longa duração e conexão 4G'
         },
         buyLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_SMART_POS_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+      },
+      {
+        id: 'T3',
+        name: 'T3',
+        fullName: 'Maquininha T3',
+        badge: 'POPULAR',
+        slogan: 'A maquininha parceira do empreendedor brasileiro',
+        connectivity: 'Chip 3G e Wi-Fi',
+        nfc: 'Sim',
+        receipt: 'Impresso ou SMS',
+        featured: false,
+        features: [
+          'Frete e troca grátis pra todo o Brasil',
+          'Com Chip 3G e Wi-Fi',
+          'Receba por aproximação (NFC)',
+          'Comprovante impresso ou SMS',
+          'Venda pelo App com TapTon, Link e Pix',
+          'Aceite Pix na Maquininha',
+          'Chip com internet ilimitada e grátis',
+          'Garantia ilimitada'
+        ],
+        highlight: {
+          title: '🖨️ Com impressora integrada',
+          description: 'Emita comprovantes impressos para seus clientes'
+        },
+        buyLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_S920_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
+      },
+      {
+        id: 'T2',
+        name: 'T2',
+        fullName: 'Maquininha T2',
+        badge: 'COMPACTA',
+        slogan: 'A maquininha compacta que tá sempre com você',
+        connectivity: 'Chip 3G e Wi-Fi',
+        nfc: 'Sim',
+        receipt: 'SMS apenas',
+        featured: false,
+        features: [
+          'Frete e troca grátis pra todo o Brasil',
+          'Com Chip 3G e Wi-Fi',
+          'Receba por aproximação (NFC)',
+          'Comprovante por SMS',
+          'Venda pelo App com TapTon, Link e Pix',
+          'Aceite Pix na Maquininha',
+          'Chip com internet ilimitada e grátis',
+          'Garantia ilimitada'
+        ],
+        highlight: {
+          title: '📱 Ideal para vendas móveis',
+          description: 'Perfeita para quem está sempre em movimento'
+        },
+        buyLink: 'https://ton.com.br/checkout/cart/?productId=TONPRO_TIER_NOV24_D195_B&referrer=62F0C435-81C7-40EF-BED6-75E60E7CC922&userAnticipation=0&userTag=tonpro_tier_nov24_b&utm_medium=invite_share&utm_source=revendedor'
       }
     ];
 
@@ -780,7 +913,44 @@
 
       const html = products.map(product => {
         const imageSrc = PRODUCT_IMAGES[product.name] || PRODUCT_IMAGES['T3 Smart'];
+        const featuredClass = product.featured ? 'featured' : '';
         
+        if (product.featured) {
+          // LAYOUT ESPECIAL PARA T3 SMART
+          return `
+            <div class="product-card ${featuredClass}">
+              <div class="product-content">
+                <div>
+                  <h3 class="product-name">${product.fullName}</h3>
+                  <p class="product-slogan">${product.slogan}</p>
+                  
+                  <ul class="features-list">
+                    ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                  </ul>
+
+                  <div class="highlight-feature">
+                    <strong>${product.highlight.title}</strong>
+                    <span>${product.highlight.description}</span>
+                  </div>
+
+                  <a href="${product.buyLink}" 
+                     target="_blank" 
+                     rel="noopener noreferrer" 
+                     class="btn-primary">
+                    🛒 Pedir ${product.name} Agora
+                  </a>
+                </div>
+                
+                <div class="product-image-wrapper">
+                  <span class="product-badge">${product.badge}</span>
+                  <img src="${imageSrc}" alt="${product.fullName}" class="product-image" loading="lazy">
+                </div>
+              </div>
+            </div>
+          `;
+        }
+        
+        // LAYOUT NORMAL PARA OUTRAS MAQUININHAS
         return `
           <div class="product-card">
             <div class="product-image-wrapper">
@@ -844,6 +1014,7 @@
         renderProducts(PRODUCTS_DATA);
         renderComparisonTable(PRODUCTS_DATA);
         console.log('✅ Produtos carregados com sucesso!');
+        console.log('⭐ T3 Smart em destaque!');
       }, 500);
     });
   </script>
